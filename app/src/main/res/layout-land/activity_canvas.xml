@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/mCanvas"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:background="@color/white">
+
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+        <Button
+            android:id="@+id/mAddTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="添加文字" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="字体"/>
+
+            <ImageView
+                android:id="@+id/mRemoveTextViewSize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_remove_24"/>
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:layout_width="0dp"
+                android:id="@+id/mEditTextSize"
+                android:layout_weight="5"
+                android:max="150"
+                android:min="10"
+                android:progress="20"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/mAddTextViewSize"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_add_24"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/mTextViewNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="20"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
