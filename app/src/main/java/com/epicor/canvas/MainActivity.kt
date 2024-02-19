@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity(), CallbackListener {
         binding.mCanvas?.setOnClickListener {
             startActivity(Intent(this,CanvasActivity::class.java))
         }
+
+        binding.Proportion?.setOnClickListener { startActivity(Intent(this,ProportionActivity::class.java)) }
     }
 
 

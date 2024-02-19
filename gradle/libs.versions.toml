@@ -1,5 +1,6 @@
 [versions]
-com-android-application = "8.1.0-alpha10"
+com-android-application = "8.1.4"
+jsoup = "1.17.2"
 org-jetbrains-kotlin-android = "1.8.0"
 core-ktx = "1.9.0"
 junit = "4.13.2"
@@ -12,6 +13,7 @@ utilcodex = "1.31.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
