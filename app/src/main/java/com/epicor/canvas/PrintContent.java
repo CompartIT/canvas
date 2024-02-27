@@ -3,12 +3,8 @@ package com.epicor.canvas;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.epicor.canvas.R;
 import com.gprinter.command.LabelCommand;
 
 import java.util.Vector;
@@ -65,7 +61,7 @@ public class PrintContent {
         tsc.addReference(0, 0);
         tsc.addSpeed(LabelCommand.SPEED.SPEED12);
         //设置浓度
-        tsc.addDensity(LabelCommand.DENSITY.DNESITY10);
+        tsc.addDensity(LabelCommand.DENSITY.DNESITY12);
         // 撕纸模式开启
         tsc.addTear(LabelCommand.RESPONSE_MODE.ON);
         // 清除打印缓冲区

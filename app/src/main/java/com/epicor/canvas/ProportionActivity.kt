@@ -257,8 +257,6 @@ class ProportionActivity : AppCompatActivity() {
                             // 在这里更新UI
                             binding.mImage?.setImageBitmap(bitmap)
                         }
-
-
                         if (result) {
                             ToastUtils.showShort(getString(R.string.send_success))
                         } else {
