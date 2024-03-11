@@ -42,8 +42,6 @@
         <activity android:name=".ProportionActivity"
             android:screenOrientation="landscape"/>
 
-        <activity android:name=".PackageActivity"
-            android:screenOrientation="landscape"/>
 
 
         <meta-data

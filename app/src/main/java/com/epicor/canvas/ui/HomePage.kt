@@ -4,9 +4,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -15,6 +17,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -24,20 +30,47 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavHostController
 import com.epicor.canvas.R
 
 @Composable
-fun  HomePage( navController: NavHostController){
+fun HomePage(navController: NavHostController) {
     Column {
-       TopLayout()
+        TopLayout()
         ContentLayout()
         BottomLayout(navController)
     }
 }
+@Composable
+fun PackageDialog(onDismiss: () -> Unit, function: () -> Unit) {
+
+    Dialog(onDismissRequest = onDismiss, content = {
+        BoxWithConstraints {
+            val width = maxWidth.coerceAtMost(1046.dp)
+            val height = maxHeight.coerceAtMost(666.dp)
+
+            Box(
+                modifier = Modifier
+                    .width(width)
+                    .height(height)
+                    .background(Color(0xffffffff), shape = RoundedCornerShape(20.dp))
+            ) {
+                Column(modifier = Modifier.fillMaxSize()) {
+                    // 在这里添加你的内容
+                }
+            }
+        }
+    })
+}
+
+
 
 @Composable
 fun BottomLayout(navController: NavHostController) {
+
+    var showDialog by remember { mutableStateOf(false) }
+
     Row(
         modifier = Modifier
             .padding(start = 64.dp, top = 53.dp)
@@ -47,7 +80,8 @@ fun BottomLayout(navController: NavHostController) {
             modifier = Modifier
                 .width(294.dp)
                 .height(397.dp)
-                .background(Color(0xff00AEEF), shape = RoundedCornerShape(15.dp)).clickable { navController.navigate("PackagePage") }
+                .background(Color(0xff00AEEF), shape = RoundedCornerShape(15.dp))
+                .clickable { showDialog = true },
         ) {
             Column(
                 modifier = Modifier
@@ -66,7 +100,9 @@ fun BottomLayout(navController: NavHostController) {
                 )
 
                 Text(
-                    modifier = Modifier.fillMaxWidth().padding(start = 35.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 35.dp),
                     text = "批号包装",
                     color = Color(0xff3d3d3d),
                     fontSize = 30.sp,
@@ -74,6 +110,11 @@ fun BottomLayout(navController: NavHostController) {
                     textAlign = TextAlign.Start
                 )
             }
+
+            if (showDialog){
+                PackageDialog(onDismiss = {showDialog = false}) {
+
+                }}
         }
 
         Box(
@@ -95,13 +136,17 @@ fun BottomLayout(navController: NavHostController) {
                 Image(
                     painter = painterResource(id = R.mipmap.home_two),
                     contentDescription = null,
-                    modifier = Modifier.size(
-                        255.dp
-                    ).padding(start = 25.dp)
+                    modifier = Modifier
+                        .size(
+                            255.dp
+                        )
+                        .padding(start = 25.dp)
                 )
 
                 Text(
-                    modifier = Modifier.fillMaxWidth().padding(start = 35.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 35.dp),
                     text = "包装追溯",
                     color = Color(0xff3d3d3d),
                     fontSize = 30.sp,
@@ -136,7 +181,9 @@ fun BottomLayout(navController: NavHostController) {
                 )
 
                 Text(
-                    modifier = Modifier.fillMaxWidth().padding(start = 35.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 35.dp),
                     text = "包装合并",
                     color = Color(0xff3d3d3d),
                     fontSize = 30.sp,
@@ -172,7 +219,9 @@ fun BottomLayout(navController: NavHostController) {
                 )
 
                 Text(
-                    modifier = Modifier.fillMaxWidth().padding(start = 35.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 35.dp),
                     text = "包装撤销",
                     color = Color(0xff3d3d3d),
                     fontSize = 30.sp,
